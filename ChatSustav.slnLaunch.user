@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ChatSustav\\ChatSustav.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

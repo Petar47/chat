@@ -1,0 +1,4 @@
+C:\Users\pmartinovic\source\repos\ChatSustav\ChatSustav\bin\Release\net8.0-android\publish\com.companyname.chatsustav-Signed.aab
+C:\Users\pmartinovic\source\repos\ChatSustav\ChatSustav\bin\Release\net8.0-android\publish\com.companyname.chatsustav.aab
+C:\Users\pmartinovic\source\repos\ChatSustav\ChatSustav\bin\Release\net8.0-android\publish\com.companyname.chatsustav-Signed.apk
+C:\Users\pmartinovic\source\repos\ChatSustav\ChatSustav\bin\Release\net8.0-android\publish\_Microsoft.Android.Resource.Designer.dll

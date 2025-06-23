@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatSustav.ChatPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Odjava"
+         Order="Primary"
+         Priority="0"
+         Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>
+    <HorizontalStackLayout>
+        <VerticalStackLayout WidthRequest="200" Padding="10" BackgroundColor="#EEE">
+            <Label Text="Online korisnici" FontAttributes="Bold" />
+            <Entry x:Name="searchEntry" Placeholder="Pretraži korisnike" TextChanged="SearchEntry_TextChanged"/>
+            <Picker x:Name="filterPicker" SelectedIndexChanged="FilterPicker_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Moja grupa</x:String>
+                        <x:String>Svi</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+                <Picker.SelectedIndex>0</Picker.SelectedIndex>
+            </Picker>
+            <ListView ItemsSource="{Binding FilteredUsers}"
+          SelectedItem="{Binding SelectedPrivateChatUser}"
+          x:Name="UsersListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Username}" Detail="{Binding RoleName}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <CollectionView ItemsSource="{Binding FilteredUsers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Username}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout HorizontalOptions="FillAndExpand" Padding="10">
+            <Label Text="Poruke:" FontAttributes="Bold"/>
+            <CollectionView ItemsSource="{Binding Messages}"
+                IsVisible="{Binding SelectedPrivateChatUser, Converter={StaticResource NullToBoolConverter}, ConverterParameter=false}" />
+
+                    <CollectionView ItemsSource="{Binding PrivateMessages}"
+                IsVisible="{Binding SelectedPrivateChatUser, Converter={StaticResource NullToBoolConverter}, ConverterParameter=true}" />
+
+
+
+            <HorizontalStackLayout>
+                <Entry x:Name="messageEntry" Placeholder="Unesite poruku" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Pošalji" Clicked="SendButton_Clicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </HorizontalStackLayout>
+</ContentPage>
